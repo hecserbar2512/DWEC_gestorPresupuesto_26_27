@@ -68,6 +68,20 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         }
     };
 
+    this.actualizarFecha = function(nuevaFecha) {
+        if (typeof nuevaFecha === "string" && !isNaN(Date.parse(nuevaFecha))) {
+            this.fecha = Date.parse(nuevaFecha);
+        }
+    }
+
+    this.borrarEtiquetas = function(...etiquetasABorrar) {
+        for(let etiquetaABorrar of etiquetasABorrar) {
+            if(this.etiquetas.includes(etiquetaABorrar)) {
+                let index = this.etiquetas.indexOf(etiquetaABorrar);
+                this.etiquetas.splice(index, 1);
+            }
+        }
+    }
     this.mostrarGastoCompleto = function() {
 
         let texto = `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.\n`;
@@ -96,7 +110,7 @@ function listarGastos(){
     }
 }
 
-function anyadirGasto(){
+function anyadirGasto(gastoNuevo){
     
 }
 
