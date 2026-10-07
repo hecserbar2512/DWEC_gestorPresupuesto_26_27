@@ -125,11 +125,17 @@ function borrarGasto(idGastoABorrar){
 }
 
 function calcularBalance(){
-
+    let gastosTotales = calcularTotalGastos();
+    let balance = presupuesto - gastosTotales;
+    return balance;
 }
 
 function calcularTotalGastos(){
-    
+    let totalGastos = 0;
+    for(let gasto of gastos){
+        totalGastos += gasto.valor;
+    }
+    return totalGastos;
 }
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
 // Las funciones y objetos deben tener los nombres que se indican en el enunciado
