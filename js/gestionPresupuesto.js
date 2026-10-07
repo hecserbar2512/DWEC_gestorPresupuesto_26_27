@@ -1,7 +1,7 @@
 'use strict';
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 let presupuesto = 0;
-let gasto = [];
+let gastos = [];
 let idGasto = 0;
 // TODO: Variable global
 
@@ -102,20 +102,26 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
 }
 
 function listarGastos(){
-    if(gasto.length === 0){
+    if(gastos.length === 0){
         return [];
     }
     else{
-        return gasto;
+        return gastos;
     }
 }
 
 function anyadirGasto(gastoNuevo){
-    
+    gastoNuevo.id = idGasto;
+    idGasto++;
+    gastos.push(gastoNuevo);
 }
 
-function borrarGasto(){
-    
+function borrarGasto(idGastoABorrar){
+    for(let i = 0; i < gastos.length; i++){
+        if(gastos[i].id == idGastoABorrar){
+            gastos.splice(i,1);
+        }
+    }
 }
 
 function calcularBalance(){
